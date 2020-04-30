@@ -1,0 +1,32 @@
+
+* {
+  padding: 0;
+  margin: 0;
+
+  
+}
+
+body {
+  background: #FEFEFE;
+}
+
+
+h1 {
+  font-family: 'Fredoka One', cursive;
+  color: #FC5185;
+  font-size: 3rem;
+}
+
+p {
+  margin-top: 10px;
+  font-family: 'PT Sans', sans-serif;
+  color: rgb(161, 151, 151);
+}
+
+.top {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
