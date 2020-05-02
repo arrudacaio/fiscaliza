@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link  } from 'react-router-dom';
 import './styles.css';
 
 
@@ -7,7 +8,9 @@ export default function Box(props){
     <div className="box">
       <h1>{props.title}</h1>
       <p>{props.resume}</p>
-      <button type="submit">{props.btnText}</button>
+      <Link to={props.go}>
+        <button type="submit">{props.btnText}</button>
+      </Link>
     </div>
   );
 }

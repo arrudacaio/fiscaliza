@@ -16,6 +16,7 @@ export default function Main(){
           title="Despesas"
           resume="Despesas dos parlamentares com
           mandato em exercício."
+          go="/Despesas"
           btnText="Consultar"
         />
         <Box 

@@ -1,0 +1,13 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #1C2C3F;
+}
+
+a {
+  text-decoration: none;
+}

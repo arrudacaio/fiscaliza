@@ -1,0 +1,53 @@
+
+
+.rectangule {
+  background: #1C2C3F;
+  width: 355px;
+  min-height:  1024px;
+  border: 1px solid #253F5E;
+
+}
+
+.rectangule h1 {
+  font-family: 'Fredoka One', cursive;
+  color: #FF304F;
+  font-size: 2rem;
+  margin: 32px 64px;
+}
+
+form {
+  padding: 8px 16px;
+}
+
+form h2 {
+  font-family: 'Roboto', sans-serif;
+  color: #28C7FA;
+  font-size: 18px;
+  margin-bottom: 10px;
+
+}
+
+form h3{
+  font-family: 'Roboto', sans-serif;
+  color: grey;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+form input {
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
+}
+
+form button{
+  border: none;
+  background: #FF304F;
+  height: 35px;
+  width: 35px;
+  border-radius: 8px;
+  margin-left: 10px ;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
+  color: #FFF;
+}
