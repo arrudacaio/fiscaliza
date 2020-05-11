@@ -12,6 +12,7 @@ export default function Model(props){
       <form>
         <h2>{props.title}</h2>
         <input type="text"  placeholder="Nome do Deputado"/>
+        <input type="text"  placeholder="Ano das despesas"/>
         <button type="button"><FiSearch /></button>
         <h3>Ex: Marcelo Freixo</h3>
       </form>
