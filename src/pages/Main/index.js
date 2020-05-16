@@ -50,10 +50,10 @@ export default function Main() {
         var totalGastos = somaValores(gastos);
         //setGastos(totalGastos.toFixed(2));
         setGastos(
-          currency(totalGastos.toFixed(2), {
+          currency(parseFloat(totalGastos.toFixed(2)), {
             separator: ".",
             decimal: ",",
-          }).format()
+          }).format(false)
         );
       }
     } catch (error) {
