@@ -12,32 +12,75 @@ a {
   text-decoration: none;
 }
 
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 100px;
+}
+
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 75px;
+}
 
 .logo h1 {
   font-family: 'Fredoka One', cursive, sans-serif;
   color: #FF304F;
-  font-size: 3rem;
+  font-size: 4rem;
 }
 
 .logo p {
-  margin-top: 10px;
+  line-height: 2;
   font-family: 'PT Sans', sans-serif;
   color: #FFF;
+  font-size: 18px;
 }
 
-div.logo {
-  margin-top: 70px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
+form {
+  max-width: 450px ;
 }
 
-div.container {
-  margin: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+form input {
+  padding: 8px 16px;
+  border: 1px solid rgb(230, 230, 230);
+  border-radius: 4px;
+  margin-right: 5px;
+}
 
+form input#number{
+  max-width: 100px ;
+}
+
+form input::placeholder{
+  font-weight: 600;
+}
+
+form button {
+  padding: 8px 16px;
+  background: #FF304F;
+  color: #FFF;
+  border: 1px solid #FF304Fee;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+footer p {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: #606060;
+  font-family: 'PT Sans', sans-serif;
+  padding: 8px 16px;
+  font-size: 12px;
 
 }
