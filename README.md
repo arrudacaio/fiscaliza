@@ -1,5 +1,4 @@
-# FISCALIZA 
-### Consulte os gastos dos parlamentares com mandato em andamento.
+# FISCALIZA - Consulte os gastos dos parlamentares com mandato em andamento.
 
 
 Meu intuito inicial com esse mini-projeto era conseguir criar uma plataforma em que eu pudesse visualizar os gastos dos parlamentares.
