@@ -52,6 +52,7 @@ form input {
   border: 1px solid rgb(230, 230, 230);
   border-radius: 4px;
   margin-right: 5px;
+  outline: none;
 }
 
 form input#number{
