@@ -19,9 +19,8 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "dev-start": "react-scripts start",
     "start": "node server.js",
-    "build": "CI= react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

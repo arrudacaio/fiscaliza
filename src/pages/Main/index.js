@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import Card from "../../components/Card/Card";
+import currency from "currency.js";
 import "./styles.css";
-import { buscaDeputadoInfo } from "../../services/api";
-import { parseToCurrency, somaValores } from '../../utils';
+import api from "../../services/api";
 
 export default function Main() {
   const [deputado, setDeputado] = useState("");
@@ -12,105 +12,77 @@ export default function Main() {
   const [gastos, setGastos] = useState();
   const [ano, setAno] = useState();
 
-  const [formObject, setFormObject] = useState({ deputado: "", ano: new Date().getFullYear() })
-
-  const [carregando, setCarregando] = useState(false);
-  const [deputadoNaoEncontrado, setDeputadoNaoEncontrado] = useState(false);
-
-  const isFormValid = () => {
-    return (formObject.deputado && formObject.ano);
+  function somaValores(lista) {
+    var total = 0;
+    for (var i = 0; i < lista.length; i++) {
+      total += lista[i];
+    }
+    return total;
   }
 
-  const handleFormChange = (e) => {
-    formObject[e.target.name] = e.target.value;
-    setFormObject(formObject);
-  }
+  const getDeputado = async (e) => {
+    try {
+      e.preventDefault();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setDeputadoNaoEncontrado(false);
+      const user = e.target.elements.deputado.value;
+      const ano = e.target.elements.ano.value;
+      setAno(ano);
 
-    const nomeDeputado = formObject.deputado;
-    const ano = formObject.ano;
-    
-    if (isFormValid()) {
-      setCarregando(true);
-      buscaDeputadoInfo(nomeDeputado, ano)
-      .then(deputado => {
+      if (user && ano) {
+        const res = await api.get(`?nome=${user}`);
+        const dados = res.data.dados[0];
+        const despesas = await api.get(
+          `/${dados.id}/despesas?ano=${ano}&ordem=ASC&ordenarPor=ano`
+        );
+        const listaDados = despesas.data.dados;
 
-        setAno(ano);
-        setId(deputado.id);
-        setDeputado(deputado.nome);
-        setImg(deputado.img);
-        setPartido(deputado.partido);
+        setId(dados.id);
+        setDeputado(dados.nome);
+        setImg(dados.urlFoto);
+        setPartido(dados.siglaPartido);
 
-        let gastos = deputado.despesas.map((despesa) => {
+        const gastos = listaDados.map((despesa) => {
           if (despesa.ano === Number(ano)) {
             return despesa.valorLiquido;
           }
         });
-  
-        let totalGastos = somaValores(gastos);
-  
-        setGastos(parseToCurrency(totalGastos));
-      })
-      .catch((err) => {
-        setDeputadoNaoEncontrado(true);
-      })
-      .finally(() => {
-        setCarregando(false);
-      });
 
+        var totalGastos = somaValores(gastos);
+        //setGastos(totalGastos.toFixed(2));
+        setGastos(
+          currency(parseFloat(totalGastos.toFixed(2)), {
+            separator: ".",
+            decimal: ",",
+          }).format(false)
+        );
+      }
+    } catch (error) {
+      console.log(error);
     }
-  }
-
-  const isPrimeiraBusca = () => {
-    return deputado === "";
-  }
-
-  const exibeDeputado = () => isPrimeiraBusca() || deputadoNaoEncontrado? 
-    deputadoNaoEncontrado? informacaoContentDiv("Deputado não encontrado") : null
-    :
-    <Card
-      img={img}
-      deputado={deputado}
-      partido={partido}
-      ano={ano}
-      gastos={gastos}
-    />
-
-  const informacaoContentDiv = (texto) => <div
-                                style={{ display: 'flex',
-                                height: 100,
-                                justifyContent: 'center',
-                                alignItems: 'center'
-                              }}>
-                                <h3 style={{ color: 'white' }}>{texto}</h3>
-                              </div>
+  };
 
   return (
     <div className="container">
       <div className="logo">
         <h1>FISCALIZA</h1>
-        <p>Consulte os gastos dos parlamentares com mandato em andamento</p>
+        <p>consulte os gastos dos parlamentares com mandato em andamento</p>
       </div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Nome do deputado"
-          name="deputado"
-          onChange={handleFormChange}
-        />
-        <input
-          id="number"
-          type="number"
-          placeholder="Ano"
-          name="ano"
-          onChange={handleFormChange}
-        />
+      <form onSubmit={getDeputado}>
+        <input type="text" placeholder="Nome do deputado" name="deputado" />
+        <input id="number" type="number" placeholder="Ano" name="ano" />
         <button type="submit">Pesquisar</button>
       </form>
-      { carregando ? informacaoContentDiv('Carregando...') : exibeDeputado() }
+      {deputado && ano ? (
+        <Card
+          img={img}
+          deputado={deputado}
+          partido={partido}
+          ano={ano}
+          gastos={gastos}
+        />
+      ) : (
+        <Fragment />
+      )}
       <footer>
         <p>
           Todos os dados foram retirados da API de Dados Abertos da Câmara dos
