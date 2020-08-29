@@ -1,8 +1,8 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import Card from "../../components/Card/Card";
 import "./styles.css";
 import { buscaDeputadoInfo } from "../../services/api";
-import { parseToCurrency, somaValores } from '../../utils/index';
+import { parseToCurrency, somaValores } from '../../utils';
 
 export default function Main() {
   const [deputado, setDeputado] = useState("");
