@@ -3,9 +3,12 @@ import './styles.css';
 
 
 export default function Card(props){
+
   return(
     <div className="card">
-      <img src={props.img} />
+      <div style={{ minWidth: 114 }}>
+        <img alt={props.deputado} src={props.img} />
+      </div>
       <div className="infos">
         <h1>{props.deputado}</h1>
         <p>Partido: {props.partido}</p>
