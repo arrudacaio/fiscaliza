@@ -71,6 +71,7 @@ form button {
   font-weight: bold;
   border-radius: 4px;
   cursor: pointer;
+  outline: none;
 }
 
 footer p {
