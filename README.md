@@ -7,4 +7,6 @@ Através desse mini-projeto pude aprender mais sobre consumir API's externas e e
 
 A API externa utilizada foi a do Dados Abertos, que contribui para a transparência no meio político.
 
+https://fiscaliza.netlify.app/
+
 ![Tela-Fiscaliza](https://i.ibb.co/LZSPdjx/tela-11.png)
