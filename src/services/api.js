@@ -29,7 +29,7 @@ export const buscaDeputadoInfo = async (nome, ano) => {
         despesas: listaDados
     }
 
-    console.log(deputadoInfo);
+    
     return deputadoInfo;
 }
 
