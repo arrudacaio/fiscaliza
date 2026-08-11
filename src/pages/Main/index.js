@@ -22,8 +22,7 @@ export default function Main() {
   }
 
   const handleFormChange = (e) => {
-    formObject[e.target.name] = e.target.value;
-    setFormObject(formObject);
+    setFormObject({ ...formObject, [e.target.name]: e.target.value });
   }
 
   const handleSubmit = (e) => {
